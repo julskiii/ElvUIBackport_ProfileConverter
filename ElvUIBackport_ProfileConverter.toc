@@ -6,4 +6,4 @@
 ## RequiredDeps: ElvUI
 
 Embeds.xml
-ElvUI_ProfileConverter.lua
+ElvUIBackport_ProfileConverter.lua

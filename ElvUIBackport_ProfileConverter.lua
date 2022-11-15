@@ -18,7 +18,7 @@ function ns:Convert(dataString)
 
    local data = gsub(dataString, '^'..'!E1!', '')
    local decodedData = LibDeflate:DecodeForPrint(data)
-	local decompressed = LibDeflate:DecompressDeflate(decodedData)
+   local decompressed = LibDeflate:DecompressDeflate(decodedData)
 
    if not decompressed then
       return format("Error decompressing data: %s.")
@@ -39,7 +39,7 @@ function ns:OnInitialize()
       order = 66,
       args = {
         convert = {
-          name = "Paste the old profile into the editbox below:",
+          name = "Paste the wago profile into the editbox below:",
           type = "input",
           width = "full",
           multiline = 40,
