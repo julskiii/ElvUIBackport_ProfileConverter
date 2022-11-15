@@ -9,24 +9,25 @@ local ElvUIPlugin = LibStub("LibElvUIPlugin-1.0")
 ns = LibStub("AceAddon-3.0"):NewAddon("ElvUI Profile Converter")
 
 function ns:Convert(dataString)
-   if strfind(dataString, '!E1!') then
-      return "Error: Input already uses a new format."
+   if LibBase64:IsBase64(dataString) then
+      return "Error: Input already uses an old format."
    end
-   if not LibBase64:IsBase64(dataString) then
+   if not strfind(dataString, '!E1!') then
       return "Error: Input doesn't look like a correct profile."
    end
 
-   local decodedData = LibBase64:Decode(dataString)
-   local decompressedData, decompressedMessage = LibCompress:Decompress(decodedData)
+   local data = gsub(dataString, '^'..'!E1!', '')
+   local decodedData = LibDeflate:DecodeForPrint(data)
+	local decompressed = LibDeflate:DecompressDeflate(decodedData)
 
-   if not decompressedData then
-      return format("Error decompressing data: %s.", decompressedMessage)
+   if not decompressed then
+      return format("Error decompressing data: %s.")
    end
 
-   local compressedData = LibDeflate:CompressDeflate(decompressedData, {level = 5})
-   local profileExport = LibDeflate:EncodeForPrint(compressedData)
+   local compressedData = LibCompress:Compress(decompressed)
+   local profileExport = LibBase64:Encode(compressedData)
 
-   return "!E1!"..profileExport
+   return profileExport
 end
 
 function ns:OnInitialize()

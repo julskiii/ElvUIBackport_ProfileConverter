@@ -2,5 +2,6 @@
 
   <Script file="Libs\LibBase64-1.0\LibBase64-1.0.lua"/>
   <Script file="Libs\LibCompress\LibCompress.lua"/>
+  <Script file="Libs\LibDeflate\LibDeflate.lua"/>
 
 </Ui>
