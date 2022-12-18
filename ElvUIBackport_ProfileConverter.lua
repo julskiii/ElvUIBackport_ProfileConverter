@@ -42,7 +42,7 @@ function ns:OnInitialize()
           name = "Paste the wago profile into the editbox below:",
           type = "input",
           width = "full",
-          multiline = 40,
+          multiline = 38,
           set = function(_, val) ns.status = ns:Convert(val) end,
           get = function(_) return ns.status end
         }
