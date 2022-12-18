@@ -1,6 +1,6 @@
 ﻿# ElvUI Profile Converter
 
-A small tool that allows converting old profile exports to the new format.
+A small tool that allows converting new profile (wago.io) exports to the old (3.3.5) format.
 
 Usage: `Profile Converter` button in ElvUI settings.
 
